@@ -7,6 +7,7 @@ class Attendance < ApplicationRecord
   validates :stripe_customer_id, presence: true, uniqueness: true
 
   def new_attendee_notif_to_admin_email
-    UserMailer.new_attendee_notif_to_admin_email(event.admin, attendee, event).deliver_now
+    byebug
+    AttendanceMailer.new_attendee_notif_to_admin_email(event.admin, attendee, event).deliver_now
   end
 end
