@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+THP Marseille - Rendu du 11/02
 
-Things you may want to cover:
+Par Thibaut Miquel, 
 
-* Ruby version
 
-* System dependencies
+# PRODUCTION ENV.
 
-* Configuration
+https://my-eventbrite.herokuapp.com/
 
-* Database creation
+# INSTRUCTIONS FOR THE DEVELOPMENT ENV.
 
-* Database initialization
+Clone this folder
+Run 'bundle install'
+Run rails db:create, db:migrate, db:seed
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
