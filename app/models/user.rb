@@ -6,7 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   after_create :welcome_send
-  has_secure_password
   has_many :managed_events, foreign_key: 'admin_id', class_name: 'Event'
   has_many :attendances, foreign_key: 'attendee_id'
   has_many :attended_events, through: :attendances, source: :event
