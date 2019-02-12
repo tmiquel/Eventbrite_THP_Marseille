@@ -25,7 +25,7 @@ puts "Database generation for #{models_array.join(' ')}"
 puts '-' * 50
 puts
 
-models_items_count = Hash[[['User', 50], ['Event', 100], ['Attendance', 200]]]
+models_items_count = Hash[[['User', 5], ['Event', 10], ['Attendance', 20]]]
 
 models_array.each do |model|
   puts "Generating #{models_items_count[model.name]} items for #{model.name}"
