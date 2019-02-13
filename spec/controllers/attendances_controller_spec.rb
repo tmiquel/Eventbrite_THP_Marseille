@@ -45,7 +45,7 @@ RSpec.describe AttendancesController, type: :controller do
   describe 'GET #index' do
     it 'returns a success response' do
       Attendance.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :index, params: {}
       expect(response).to be_successful
     end
   end
@@ -53,14 +53,14 @@ RSpec.describe AttendancesController, type: :controller do
   describe 'GET #show' do
     it 'returns a success response' do
       attendance = Attendance.create! valid_attributes
-      get :show, params: { id: attendance.to_param }, session: valid_session
+      get :show, params: { id: attendance.to_param }
       expect(response).to be_successful
     end
   end
 
   describe 'GET #new' do
     it 'returns a success response' do
-      get :new, params: {}, session: valid_session
+      get :new, params: {}
       expect(response).to be_successful
     end
   end
@@ -68,7 +68,7 @@ RSpec.describe AttendancesController, type: :controller do
   describe 'GET #edit' do
     it 'returns a success response' do
       attendance = Attendance.create! valid_attributes
-      get :edit, params: { id: attendance.to_param }, session: valid_session
+      get :edit, params: { id: attendance.to_param }
       expect(response).to be_successful
     end
   end
@@ -77,19 +77,19 @@ RSpec.describe AttendancesController, type: :controller do
     context 'with valid params' do
       it 'creates a new Attendance' do
         expect do
-          post :create, params: { attendance: valid_attributes }, session: valid_session
+          post :create, params: { attendance: valid_attributes }
         end.to change(Attendance, :count).by(1)
       end
 
       it 'redirects to the created attendance' do
-        post :create, params: { attendance: valid_attributes }, session: valid_session
+        post :create, params: { attendance: valid_attributes }
         expect(response).to redirect_to(Attendance.last)
       end
     end
 
     context 'with invalid params' do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: { attendance: invalid_attributes }, session: valid_session
+        post :create, params: { attendance: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -103,14 +103,14 @@ RSpec.describe AttendancesController, type: :controller do
 
       it 'updates the requested attendance' do
         attendance = Attendance.create! valid_attributes
-        put :update, params: { id: attendance.to_param, attendance: new_attributes }, session: valid_session
+        put :update, params: { id: attendance.to_param, attendance: new_attributes }
         attendance.reload
         skip('Add assertions for updated state')
       end
 
       it 'redirects to the attendance' do
         attendance = Attendance.create! valid_attributes
-        put :update, params: { id: attendance.to_param, attendance: valid_attributes }, session: valid_session
+        put :update, params: { id: attendance.to_param, attendance: valid_attributes }
         expect(response).to redirect_to(attendance)
       end
     end
@@ -118,7 +118,7 @@ RSpec.describe AttendancesController, type: :controller do
     context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
         attendance = Attendance.create! valid_attributes
-        put :update, params: { id: attendance.to_param, attendance: invalid_attributes }, session: valid_session
+        put :update, params: { id: attendance.to_param, attendance: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -128,13 +128,13 @@ RSpec.describe AttendancesController, type: :controller do
     it 'destroys the requested attendance' do
       attendance = Attendance.create! valid_attributes
       expect do
-        delete :destroy, params: { id: attendance.to_param }, session: valid_session
+        delete :destroy, params: { id: attendance.to_param }
       end.to change(Attendance, :count).by(-1)
     end
 
     it 'redirects to the attendances list' do
       attendance = Attendance.create! valid_attributes
-      delete :destroy, params: { id: attendance.to_param }, session: valid_session
+      delete :destroy, params: { id: attendance.to_param }
       expect(response).to redirect_to(attendances_url)
     end
   end

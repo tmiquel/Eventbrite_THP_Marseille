@@ -37,12 +37,17 @@ models_array.each do |model|
     #                zip_code: Faker::Number.number(5).to_s)
 
     when 'User'
+      password = Faker::Internet.password(13, 25, true, true)
+      email = Faker::Internet.unique.email
+
+      puts "The password of User #{email} is #{password}"
 
       model.create(first_name: Faker::Name.first_name,
                    last_name: Faker::Name.last_name,
-                   email: Faker::Internet.unique.email,
+                   email: email,
                    description: Faker::Lorem.paragraph_by_chars(256, false),
-                   password: Faker::Internet.password(13, 25, true, true))
+                   password: password,
+                   password_confirmation: password)
 
     when 'Event'
       model.create(admin: User.all.sample,

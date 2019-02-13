@@ -1,19 +1,8 @@
+<div class="container">
+  <!-- Content here -->
+
+<br>
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
 
 <p>
   <strong>First name:</strong>
@@ -25,5 +14,41 @@
   <%= @user.last_name %>
 </p>
 
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @user.description %>
+</p>
+
+<p>
+  <br>
+  <% if @user.managed_events.size > 0 -%>
+  <strong>Your managed events:</strong>
+  <%= render partial: "events/events_table", locals: {events: @user.managed_events} %>
+  <%else -%>
+  <strong>No event managed</strong>
+  <% end -%>
+  <br>
+</p>
+
+<p>
+  <br>
+  <% if @user.attended_events.size > 0 -%>
+  <strong>The events you attend:</strong>
+  <%= render partial: "events/events_table", locals: {events: @user.attended_events} %>
+  <%else -%>
+  <strong>No event attended</strong>
+  <% end -%>
+  <br>
+</p>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+</div>

@@ -1,8 +1,10 @@
+<div class="container">
+
 <p id="notice"><%= notice %></p>
 
 <h1>Attendances</h1>
-
-<table>
+<div class="table-responsive">
+<table class="table table-dark">
   <thead>
     <tr>
       <th>Event</th>
@@ -18,14 +20,15 @@
         <td><%= attendance.event %></td>
         <td><%= attendance.attendee %></td>
         <td><%= attendance.stripe_customer_id %></td>
-        <td><%= link_to 'Show', attendance %></td>
-        <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
-        <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Show', attendance %></td>
+        <td><%= button_to 'Edit', edit_attendance_path(attendance) %></td>
+        <td><%= button_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+<br />
 
-<br>
-
-<%= link_to 'New Attendance', new_attendance_path %>
+<%= button_to 'New Attendance', new_attendance_path %>
+</div>

@@ -1,13 +1,14 @@
+<div class="container">
+  <!-- Content here -->
+
+<br>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Start:</strong>
-  
-</p>
 
 <p>
-  <strong>User:</strong>
-  <%= @event.admin %>
+  <strong>Admin:</strong>
+  <%= @event.admin.email %>
 </p>
 
 <p>
@@ -16,8 +17,13 @@
 </p>
 
 <p>
+  <strong>End date:</strong>
+  <%= @event.end_date %>
+</p>
+
+<p>
   <strong>Duration:</strong>
-  <%= @event.duration %>
+  <%= @event.duration.to_s + ' min' %>
 </p>
 
 <p>
@@ -32,7 +38,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @event.price %>
+  <%= @event.price.to_s + ' €' %>
 </p>
 
 <p>
@@ -42,3 +48,5 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+</div>

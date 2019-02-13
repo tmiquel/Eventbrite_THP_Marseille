@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy access_my_profile_only]
+  before_action :authenticate_user!, only: [:show]
+  before_action :access_my_profile_only, only: [:show]
 
   # GET /users
   # GET /users.json
@@ -70,6 +72,12 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:email, :password_digest, :description, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :description, :first_name, :last_name)
+  end
+
+  def access_my_profile_only
+    unless @user == current_user
+      redirect_to root_url, alert: 'Accessing the profile page of another user is forbidden.'
+    end
   end
 end

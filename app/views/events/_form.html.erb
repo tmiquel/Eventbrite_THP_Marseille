@@ -1,3 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -10,48 +15,43 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :start %>
-    <%= form.text_field :start %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
+  <br>
+  <p>This event will be managed by you.</p>
+  <br>
+  <div class="form-group">
     <%= form.label :start_date %>
     <%= form.datetime_select :start_date %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :duration %>
     <%= form.number_field :duration %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :price %>
     <%= form.number_field :price %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :location %>
     <%= form.text_field :location %>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-5">
     <%= form.submit %>
   </div>
+      </div>
+  </div>
+</div>
 <% end %>

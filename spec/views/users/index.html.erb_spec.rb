@@ -7,14 +7,14 @@ RSpec.describe 'users/index', type: :view do
     assign(:users, [
              User.create!(
                email: 'Email',
-               password_digest: 'Password Digest',
+               password: 'Password Digest',
                description: 'MyTextbscljabkscqkjcbkqsdjcbqskdjcbnqskjdhqskjdhqskjdhqskdjh',
                first_name: 'First Name',
                last_name: 'Last Name'
              ),
              User.create!(
                email: 'Email',
-               password_digest: 'Password Digest',
+               password: 'Password Digest',
                description: 'MyTextbscljabkscqkjcbkqsdjcbqskdjcbnqskjdhqskjdhqskjdhqskdjh',
                first_name: 'First Name',
                last_name: 'Last Name'

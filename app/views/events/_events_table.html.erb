@@ -1,28 +1,7 @@
-<div class="container">
-
-<% if notice %>
-<br>
-<div id="notice" class="alert alert-warning" role="alert">
-  <%= notice %></div>
-<% end -%>
-
-<% if alert %>
-<br>
-<div id="alert" class="alert alert-warning" role="alert">
-<%= alert %>
-</div>
-<% end -%>
-
-<br />
-
-<h1>Events</h1>
-<br />
-
 <div class="table-responsive">
 <table class="table table-dark">
   <thead>
     <tr>
-      <th>Admin</th>
       <th>Start date</th>
       <th>Duration</th>
       <th>Title</th>
@@ -34,9 +13,8 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% events.each do |event| %>
       <tr>
-        <td><%= event.admin.email %></td>
         <td><%= event.start_date %></td>
         <td><%= event.duration.to_s + ' min' %></td>
         <td><%= event.title %></td>
@@ -50,8 +28,4 @@
     <% end %>
   </tbody>
 </table>
-</div>
-
-<br />
-
 </div>

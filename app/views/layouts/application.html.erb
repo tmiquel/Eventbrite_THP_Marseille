@@ -1,15 +1,92 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
+<!doctype html>
   <head>
-    <title>EventbriteThpMarseille</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Training - Eventbrite-like website done by a student of THP" />
+    <meta name="author" content="Thibaut Miquel" />
+<!--     <meta name="generator" content="Jekyll v3.8.5"> -->
+    <title>Thib Eventbrite</title>
+
+
+
+    <!-- Bootstrap CSS -->
+<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous" /> -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="product.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar-expand site-header sticky-top py-1 bg-dark text-white">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false"><title>Eventbrite Home Page</title><circle cx="12" cy="12" r="10" /><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" /></svg>
+    </a>
+    <%= link_to  'Home', events_path, :class => "py-2 d-none d-md-inline-block text-white" %>
+    <%= link_to  'New event', new_event_path, :class => "py-2 d-none d-md-inline-block text-white" %>
+
+    <a class="py-2 d-none d-md-inline-block text-white dropdown">
+      <a class="nav-link dropdown-toggle py-2 d-none d-md-inline-block text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        <% if user_signed_in? then %>
+
+        My Account
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+        <%= link_to  'My Profile', user_path(current_user.id), :class => "dropdown-item" %>
+        <%= button_to 'Logout', destroy_user_session_path, { class: "dropdown-item", method: :delete, 
+          remote: true }  %>
+
+        <% else %>
+
+        Sign in / up
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to "Sign in", new_user_session_path, {:class => "dropdown-item"}  %>
+        <%= link_to 'Sign up', new_user_registration_path, {:class => "dropdown-item"} %>
+        <% end %>
+      </div>
+    </a>
+  </div>
+</nav>
+
+    <%= yield %>
+
+       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+
+  </body>
+
+</html>
+
+<!--     <title>EventbriteThpMarseille</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+
+
