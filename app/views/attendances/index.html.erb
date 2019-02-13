@@ -20,8 +20,8 @@
         <td><%= attendance.event %></td>
         <td><%= attendance.attendee %></td>
         <td><%= attendance.stripe_customer_id %></td>
-        <td><%= button_to 'Show', attendance %></td>
-        <td><%= button_to 'Edit', edit_attendance_path(attendance) %></td>
+        <td><%= button_to 'Show', attendance, method: :get %></td>
+        <td><%= button_to 'Edit', edit_attendance_path(attendance), method: :get %></td>
         <td><%= button_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

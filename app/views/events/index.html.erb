@@ -43,8 +43,8 @@
         <td><%= event.description %></td>
         <td><%= event.price.to_s + ' €' %></td>
         <td><%= event.location %></td>
-        <td><%= button_to 'Show', event %></td>
-        <td><%= button_to 'Edit', edit_event_path(event) %></td>
+        <td><%= button_to 'Show', event, method: :get %></td>
+        <td><%= button_to 'Edit', edit_event_path(event.id), method: :get %></td>
         <td><%= button_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
