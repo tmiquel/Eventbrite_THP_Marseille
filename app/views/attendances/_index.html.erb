@@ -1,0 +1,37 @@
+<div class="table-responsive">
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <% if defined? context %>
+       <% unless context == 'show_event' -%>
+      <th>Event</th>
+        <% end -%>
+      <% end -%>
+      <th>Attendee</th>
+      <th>Stripe customer id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% attendances.each do |attendance| %>
+      <tr>
+          <% if defined? context %>
+         <% unless context == 'show_event' -%>
+        <td><%= attendance.event.title %></td>
+        <% end -%>
+          <% end -%>
+        <td><%= attendance.attendee.email %></td>
+        <td><%= attendance.stripe_customer_id %></td>
+        <td><%= button_to 'Show', attendance, method: :get %></td>
+      <% if current_user == attendance.attendee-%>
+        <td><%= button_to 'Edit', edit_attendance_path(attendance), method: :get %></td>
+        <td><%= button_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end -%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br />

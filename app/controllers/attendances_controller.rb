@@ -15,7 +15,14 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/new
   def new
-    @attendance = Attendance.new
+    event = Event.first
+
+    @attendance = Attendance.new(attendee_id: current_user.id, event_id: session[:last_event].id, stripe_customer_id: rand(10))
+    if @attendance.save
+      redirect_to event_path(@attendance.event.id), notice: 'Attendance was successfully created.'
+    else
+      redirect_to event_path(@attendance.event.id), alert: 'Error. Attendance has not been created!'
+    end
   end
 
   # GET /attendances/1/edit
@@ -24,7 +31,11 @@ class AttendancesController < ApplicationController
   # POST /attendances
   # POST /attendances.json
   def create
-    @attendance = Attendance.new(attendance_params)
+    byebug
+
+    event = Event.first
+
+    @attendance = Attendance.new(attendee_id: current_user.id, event_id: event, stripe_customer_id: rand(10))
 
     respond_to do |format|
       if @attendance.save
@@ -70,6 +81,6 @@ class AttendancesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def attendance_params
-    params.require(:attendance).permit(:event_id, :user_id, :stripe_customer_id)
+    params.require(:attendance).permit(:event_id, :attendee_id, :stripe_customer_id)
   end
 end

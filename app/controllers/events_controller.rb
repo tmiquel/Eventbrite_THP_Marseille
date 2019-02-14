@@ -38,6 +38,8 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+
+    session[:last_event] = @event
   end
 
   # PATCH/PUT /events/1
@@ -68,6 +70,7 @@ class EventsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_event
+    puts params
     @event = Event.find(params[:id])
   end
 

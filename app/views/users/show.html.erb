@@ -40,7 +40,7 @@
   <br>
   <% if @user.attended_events.size > 0 -%>
   <strong>The events you attend:</strong>
-  <%= render partial: "events/events_table", locals: {events: @user.attended_events} %>
+  <%= render partial: "events/events_table", locals: {events: @user.attended_events, context: 'show_event'} %>
   <%else -%>
   <strong>No event attended</strong>
   <% end -%>
