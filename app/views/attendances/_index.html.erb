@@ -23,10 +23,10 @@
           <% end -%>
         <td><%= attendance.attendee.email %></td>
         <td><%= attendance.stripe_customer_id %></td>
-        <td><%= button_to 'Show', attendance, method: :get %></td>
+        <td><%= button_to 'Show', event_attendance_path(attendance.event.id), method: :get %></td>
       <% if current_user == attendance.attendee-%>
-        <td><%= button_to 'Edit', edit_attendance_path(attendance), method: :get %></td>
-        <td><%= button_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= button_to 'Edit', edit_event_attendance(attendance.event.id, attendance), method: :get %></td>
+        <td><%= button_to 'Destroy', event_attendance_path(attendance.event.id), method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end -%>
         </td>
       </tr>
