@@ -2,8 +2,8 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy access_my_profile_only]
-  before_action :authenticate_user!, only: [:show]
-  before_action :access_my_profile_only, only: [:show]
+  before_action :authenticate_user!, only: %i[show edit update destroy]
+  before_action :access_my_profile_only, only: %i[show edit update destroy]
 
   # GET /users
   # GET /users.json
@@ -56,9 +56,10 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    email = @user.email
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: "User '#{email}' was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
 
   def access_my_profile_only
     unless @user == current_user
-      redirect_to root_url, alert: 'Accessing the profile page of another user is forbidden.'
+      redirect_to root_url, alert: 'Accessing or modifying another user data is not allowed.'
     end
   end
 end

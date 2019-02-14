@@ -15,14 +15,14 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $<%= (@striprice/100) %></span>
+      <span>Amount: $<%= (@amount/100) %></span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description= "Event paiement"
-          data-amount="<%= @striprice %>"
+          data-amount="<%= @amount %>"
           data-locale="auto"></script>
 <% end %>
 </div>
