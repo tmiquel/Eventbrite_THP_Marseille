@@ -6,14 +6,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Event:</strong>
-  <%= @attendance.event %>
+  <strong>Event title:</strong>
+  <%= @attendance.event.title %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Attendee:</strong>
 
-<%= @attendance.attendee %>
+<%= @attendance.attendee.email %>
 </p>
 
 <p>
@@ -21,6 +21,6 @@
   <%= @attendance.stripe_customer_id %>
 </p>
 
-<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
+<%= link_to 'Edit', edit_event_attendance_path(@attendance.event.id, @attendance.id) %> |
 <%= link_to 'Back to Event', event_path(@attendance.event.id) %>
 </div>

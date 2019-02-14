@@ -25,7 +25,7 @@
         <td><%= attendance.stripe_customer_id %></td>
         <td><%= button_to 'Show', event_attendance_path(attendance.event.id), method: :get %></td>
       <% if current_user == attendance.attendee-%>
-        <td><%= button_to 'Edit', edit_event_attendance(attendance.event.id, attendance), method: :get %></td>
+        <td><%= button_to 'Edit', edit_event_attendance_path(attendance.event.id, attendance), method: :get %></td>
         <td><%= button_to 'Destroy', event_attendance_path(attendance.event.id), method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end -%>
         </td>

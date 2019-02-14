@@ -45,7 +45,7 @@ class AttendancesController < ApplicationController
 
     if customer&&charge
       att = Attendance.create(attendee: current_user, event: @event, stripe_customer_id: charge.customer)
-      redirect_to root_path
+      redirect_to @event
     else
       redirect_to new_event_attendance_path(@event)
     end
