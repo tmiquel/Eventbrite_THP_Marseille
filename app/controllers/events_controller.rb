@@ -77,7 +77,6 @@ class EventsController < ApplicationController
 
   def admin_only
     @event = Event.find(params[:id])
-    event_title = @event.title
     unless @event.admin == current_user
       redirect_to root_url, alert: 'Modifying the event of another user is forbidden.'
     end

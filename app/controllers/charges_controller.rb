@@ -12,7 +12,7 @@ class ChargesController < ApplicationController
       source: params[:stripeToken]
     )
 
-    charge = Stripe::Charge.create(
+    Stripe::Charge.create(
       customer: customer.id,
       amount: @amount,
       description: 'Paiement',
