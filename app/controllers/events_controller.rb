@@ -29,10 +29,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+
     event_creation = event_params.clone
     event_creation[:admin_id] = current_user.id
 
     @event = Event.new(event_creation)
+    @event.picture.attach(params[:picture])
 
     respond_to do |format|
       if @event.save

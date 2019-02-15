@@ -8,6 +8,12 @@
 </p>
 
 <p>
+  <%if @event.picture.attached?%>
+  <%= image_tag @event.picture, alt: 'Event picture', style: "max-width: 450px"%>
+  <% end %>
+</p>
+
+<p>
   <strong>Start date:</strong>
   <%= @event.start_date %>
 </p>

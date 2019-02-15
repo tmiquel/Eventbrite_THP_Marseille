@@ -16,7 +16,7 @@
     </div>
   <% end %>
   <br>
-  <p>This event will be managed by you.</p>
+  <p>You are the manager of this event.</p>
   <br>
   <div class="form-group">
     <%= form.label :start_date %>
@@ -51,7 +51,20 @@
   <div class="actions mt-5">
     <%= form.submit %>
   </div>
+  <% end %>
+
+    <div class="form-group">
+  <strong>Picture</strong>
+  <%if @event.picture.attached?%>
+  <%= image_tag @event.picture, alt: 'Picture', style: "max-width: 450px"  %>
+  <% end %>
+
+<%= form_tag event_pictures_path(@event), multipart: true do %>
+  <%= file_field_tag :picture %>
+  <%= submit_tag "Upload" %>
+<% end %>
+</div>
+
       </div>
   </div>
 </div>
-<% end %>

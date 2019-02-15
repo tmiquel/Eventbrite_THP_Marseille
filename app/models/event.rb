@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
+
   belongs_to :admin, class_name: 'User'
+  has_one_attached :picture
   has_many :attendances
   has_many :attendees, through: :attendances, source: :attendee
   validates :start_date, presence: true
@@ -16,6 +18,7 @@ class Event < ApplicationRecord
   validates :price, presence: true,
                     numericality: { greater_than: 0, less_than: 1001 }
   validates :location, presence: true
+  validates :picture, presence: true
 
   def end_date
     start_date + duration * 60
