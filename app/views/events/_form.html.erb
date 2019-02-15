@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <br><br><br>
 
-<%= form_with(model: event, local: true) do |form| %>
+<%= form_with(model: event, local: true,  multipart: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -48,6 +48,11 @@
     <%= form.text_field :location %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :picture %>
+    <%= form.file_field  :picture  %>
+  </div>
+
   <div class="actions mt-5">
     <%= form.submit %>
   </div>
@@ -58,12 +63,8 @@
   <%if @event.picture.attached?%>
   <%= image_tag @event.picture, alt: 'Picture', style: "max-width: 450px"  %>
   <% end %>
+  </div>
 
-<%= form_tag event_pictures_path(@event), multipart: true do %>
-  <%= file_field_tag :picture %>
-  <%= submit_tag "Upload" %>
-<% end %>
-</div>
 
       </div>
   </div>

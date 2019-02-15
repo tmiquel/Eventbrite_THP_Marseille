@@ -33,7 +33,10 @@ class EventsController < ApplicationController
     event_creation[:admin_id] = current_user.id
 
     @event = Event.new(event_creation)
-    @event.picture.attach(params[:picture])
+    # pic_path = Dir.getwd + '/lib/assets/simple_neuron.png'
+    # @event.picture.attach(io: File.open(pic_path), filename: ('picture ' + @event.title.to_s + '.png'))
+
+    @event.picture.attach(event_params[:picture])
 
     respond_to do |format|
       if @event.save
@@ -90,6 +93,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:admin_id, :start_date, :duration, :title, :description, :price, :location)
+    params.require(:event).permit(:admin_id, :start_date, :duration, :title, :description, :price, :location, :picture)
   end
 end
