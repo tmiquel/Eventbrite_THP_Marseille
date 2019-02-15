@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   resources :users
   resources :events do
     resources :attendances
-    resources :pictures, only:  [:create]
+    resources :pictures, only: [:create]
   end
   root to: 'events#index'
   resources :charges
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-

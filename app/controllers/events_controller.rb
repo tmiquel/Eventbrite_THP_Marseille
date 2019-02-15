@@ -29,7 +29,6 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-
     event_creation = event_params.clone
     event_creation[:admin_id] = current_user.id
 

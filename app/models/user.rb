@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :attended_events, through: :attendances, source: :event
   validates :email, presence: true, uniqueness: true
 
-
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
