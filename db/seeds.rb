@@ -26,11 +26,10 @@ puts '-' * 50
 puts
 
 models_items_count = Hash[[['User', 5], ['Event', 10], ['Attendance', 20]]]
-
+pic_path = Dir.getwd+'/lib/assets/simple_neuron.png'
 models_array.each do |model|
   puts "Generating #{models_items_count[model.name]} items for #{model.name}"
   models_items_count[model.name].times do
-    i = 0
     case model.name
     # when 'City'
     #   model.create(name: Faker::Nation.capital_city,
@@ -50,13 +49,17 @@ models_array.each do |model|
                    password_confirmation: password)
 
     when 'Event'
-      model.create(admin: User.all.sample,
+      e = model.new(admin: User.all.sample,
                    title: Faker::Lorem.paragraph_by_chars(50, false),
                    start_date: Faker::Date.forward(365),
                    duration: rand(1..10) * 5,
                    description: Faker::Lorem.paragraph_by_chars(256, false),
                    price: rand(1..1000),
                    location: Faker::Nation.capital_city)
+
+      e.picture.attach(io: File.open(pic_path), filename: ("picture " + e.title.to_s + ".png"))
+
+      e.save
 
     when 'Attendance'
       model.create(attendee: User.all.sample,
